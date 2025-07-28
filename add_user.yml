@@ -1,0 +1,14 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: Create a new user called 'deploy'
+      user:
+        name: deploy
+        state: present
+        shell: /bin/bash
+
+    - name: Add SSH key for 'deploy'
+      authorized_key:
+        user: deploy
+        key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCZzAwKLL8ex8ggCaMstWuGb6RyLXhTfWGbbfShVOvMplUWbNfmTz392rN3AhMIMqx6avkg/Cdx9uUCrPXC/gipXIFnxLe+nWr8o/noyiGS54ArLi8jzdKtAqaxcf2VT2IAndbQJxaZKFrQM2hobhz8TUSrvpKAAQbOwVbyTv+OvK3YrSrtCAQDYPEJsnt10/7gt2+Dr2TGH4kf/VQ++4Ra3kxaTMV2rTYtW2RW0KmhQS6LEywQGiEIZCx52d1683Z7yO+J4RBimKkMxCH7J9cTSpetZOVqx5fEaPQo8G7HIsOazecXURNtDVQvc5qtPeGvD2oHIsuSB4YuT3NMunhh deploy@yourdomain.com"
